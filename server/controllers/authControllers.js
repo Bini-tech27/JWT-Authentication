@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('../config/db');
 
-// User Registration
 exports.register = (req, res) => {
     const { username, email, password } = req.body;
     // Hash password
@@ -16,7 +15,6 @@ exports.register = (req, res) => {
     });
 };
 
-// User Login
 exports.login = (req, res) => {
     const { email, password } = req.body;
     const query = 'SELECT * FROM users WHERE email = ?';
