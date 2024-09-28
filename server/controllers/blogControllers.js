@@ -1,6 +1,5 @@
 const db = require('../config/db');
 
-// Get All Blogs
 exports.getBlogs = (req, res) => {
     const query = 'SELECT * FROM blogs WHERE user_id = ?';
     db.query(query, [req.user.id], (err, results) => {
@@ -9,7 +8,6 @@ exports.getBlogs = (req, res) => {
     });
 };
 
-// Create a Blog
 exports.createBlog = (req, res) => {
     const { title, content } = req.body;
     const query = 'INSERT INTO blogs (title, content, user_id) VALUES (?, ?, ?)';
