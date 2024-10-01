@@ -1,8 +1,8 @@
 const db = require('../config/db');
 
 exports.getBlogs = (req, res) => {
-    const query = 'SELECT * FROM blogs WHERE user_id = ?';
-    db.query(query, [req.user.id], (err, results) => {
+    const blogs = 'SELECT * FROM blogs WHERE user_id = ?';
+    db.query(blogs, [req.user.id], (err, results) => {
         if (err) return res.status(500).send(err);
         res.json(results);
     });
@@ -10,8 +10,8 @@ exports.getBlogs = (req, res) => {
 
 exports.createBlog = (req, res) => {
     const { title, content } = req.body;
-    const query = 'INSERT INTO blogs (title, content, user_id) VALUES (?, ?, ?)';
-    db.query(query, [title, content, req.user.id], (err, result) => {
+    const blogs = 'INSERT INTO blogs (title, content, user_id) VALUES (?, ?, ?)';
+    db.query(blogs, [title, content, req.user.id], (err, result) => {
         if (err) return res.status(500).send(err);
         res.status(201).send('Blog created');
     });
