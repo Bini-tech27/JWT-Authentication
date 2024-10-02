@@ -1,7 +1,7 @@
 const { Entity, PrimaryGeneratedColumn, Column } = require('typeorm');
 
 @Entity()
-class User {
+export class User {
     @PrimaryGeneratedColumn()
     id;
 
