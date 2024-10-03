@@ -1,18 +1,26 @@
-const { Entity, PrimaryGeneratedColumn, Column } = require('typeorm');
+const { EntitySchema } = require('typeorm');
 
-@Entity()
-export class User {
-    @PrimaryGeneratedColumn()
-    id;
+module.exports = new EntitySchema({
+    name: 'User',
+    tableName: 'users',
+    columns: {
+        id: {
+            primary: true,
+            type: 'int',
+            generated: true,
+        },
+        username: {
+            type: 'varchar',
+            nullable: false,
+        },
+        email: {
+            type: 'varchar',
+            nullable: false,
+        },
+        password: {
+            type: 'varchar',
+            nullable: false,
+        },
+    },
+});
 
-    @Column()
-    username;
-
-    @Column()
-    email;
-
-    @Column()
-    password;
-}
-
-module.exports = User;
